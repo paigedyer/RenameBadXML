@@ -1,0 +1,5 @@
+get the file
+read the file
+find section to remove
+remove section
+overwrite the file

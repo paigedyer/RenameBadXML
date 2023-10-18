@@ -1,0 +1,28 @@
+import sys
+import xml.etree.ElementTree as ET
+from lxml import etree
+
+def open_file(input_file, output_file):
+    try:
+        with open(file_path, 'r') as file:
+            tree = ET.parse(file)
+            root = tree.getroot()
+            for element_to_delete in root.findall(".//CustPrePressNotes"):
+                element_to_delete.clear()
+
+            tree.write(file_path)
+
+    except FileNotFoundError:
+        print(f"file not found: {file_path}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+def main():
+    if len(sys.argv) != 2:
+        print("Error: More than one argument provided.")
+    else:
+        file_path = sys.argv[1]
+        open_file(file_path)
+
+main()
